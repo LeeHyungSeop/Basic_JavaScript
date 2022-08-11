@@ -6,6 +6,21 @@
 
     <body>
         
+        <script>
+            
+            // array fill ////////////////////////////////////////////
+            const a = Array(10);  // 비어있는 배열 a 생성
+            console.log(a);
+            console.log(a[4]); // undefined
+            a.fill(10);  // 배열 a를 10으로 채워라
+            console.log(a); // 10으로 채워진 것을 확인할 수 있다
+
+            // method를 이용한 또 다른 방법.
+            const b = Array(10).fill(10); // 10으로 채운 배열 b 생성
+            console.log(b);
+
+        </script>
+
     </body>
 
 </html>
