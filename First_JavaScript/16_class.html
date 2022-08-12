@@ -1,0 +1,61 @@
+<html>
+
+    <head>
+
+
+    </head>
+
+    <body>
+        
+        <script>
+
+            // Class : create objects (객체들을 만들어낸다) ////////////////////////////////////////
+
+            /* 이런식으로 코딩하면 비효율적
+            
+                const o = {
+                name : 'tom',
+                age : 20
+                };
+                const j = {
+                    name : 'jane',
+                    age : 21
+                };
+                console.log(o);
+                console.log(j);
+            */
+
+            'use strict'  // 문법을 엄격하게 검사해달라.
+            // a=20; // 'use strict'가 없었다면, a가 선언되지 않았는데도 error가 발생하지 않는다.
+            
+            // class의 이름은 대부분 대문자로 시작한다.
+            class Person {
+                constructor(_name, _age){
+                    this.name = _name;  // _name은 우리가 넣고 싶은 값, this.name은 넣을 공간
+                    this.age = _age; 
+                }
+
+                show_info() {  // class에 function도 만들 수 있다.
+                    console.log(`${this.name} is ${this.age} years old`);
+                }
+
+            }
+
+            const p = new Person('jim',20); // Person이라는 class를 이용하여 p라는 new object를 만든다
+            // const p = {
+            //     name : 'jim',
+            //     age : 20
+            // }
+            const q = new Person('Jane',21);
+
+            console.log(p);  
+            console.log(q);
+
+            p.show_info(); // class에 function을 실행한다.
+            q.show_info();
+
+        </script>
+
+    </body>
+
+</html>
