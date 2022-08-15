@@ -34,7 +34,7 @@
 // for(let i = 0;i<10;i++){
 //     console.log(i);
 // }
-//     /* for loop 코드를 쓴 이유?   (Asynchronous execution : 비동기 실행)
+//     /* for loop 코드를 쓴 이유?   (Asynchronous execution : 비동기 실행)을 공부하기 위해
 
 //         만약 위에서 요청했던 HTML 파일이 크거나 서버네트워크 딜레이 때문에 오래걸린다면
 //         for loop 코드도 똑같이 delay가 된다. 
