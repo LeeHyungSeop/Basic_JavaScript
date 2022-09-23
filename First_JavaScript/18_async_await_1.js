@@ -62,25 +62,62 @@ k = (k>1) ? 3 : 0;
 
 // ///////////////////////////////////////////////////////////////////
 
+async function fetchUser(a) {   
+    console.log(`Promise 실행`);
+    
+    B().then((k)=>{ // fucntion B가 Promise를 반환하니까 이렇게 코딩한다.
+                    // k에 45가 넘어올 것이다
+                    // 그런데 fetchUser result : undefined가 나온다.
+                    // resolve가 안뚫어졌는데도 then이실행된 것이다. 
+                    // B가 완전히 끝날 때까지 기다려주는.. 동기화가 안된 것이다.
+                    // 이것을 해결 하기 위해 await 사용 
+                    // (Promise 안에서 또 다른 Promise가 동기적으로 실행하는 것을 가능하게 한다)
+        
+        if(k>=0){   
+            return `실행 끝`;
+        }
+        else{   
+            throw new Error('음수');
+        }
+    });
+}
+
+const a = fetchUser(-10)
+.then((v)=>{    
+    console.log(`fetchUser result : `+v);
+})
+.catch((error)=>{   
+    console.log(`에러발생 : ${error}`);
+})
+.finally(()=>{  
+    console.log(`Promise 끝 from finally`);
+})
+
+function B() {
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            console.log('B가 실행됨');
+            resolve(45);
+        },3000);
+    })
+}
+///////////////////////////////////////////////////////////////////
+// async의 함수의 await 기능 
+//(Promise 안에서 또 다른 Promise가 동기적으로 실행하는 것을 가능하게 한다)
+
 // async function fetchUser(a) {   
 //     console.log(`Promise 실행`);
-    
-//     B().then((k)=>{ // fucntion B가 Promise를 반환하니까 이렇게 코딩한다.
-//                     // k에 45가 넘어올 것이다
-//                     // 그런데 fetchUser result : undefined가 나온다.
-//                     // resolve가 안뚫어졌는데도 then이실행된 것이다. 
-//                     // B가 완전히 끝날 때까지 기다려주는.. 동기화가 안된 것이다.
-//                     // 이것을 해결 하기 위해 await 사용 
-//                     // (Promise 안에서 또 다른 Promise가 동기적으로 실행하는 것을 가능하게 한다)
-        
+
+//     const k = await B(); // *await는 async 함수 내에서만, 다른 Promise의 종료를 기다릴 때 사용 가능*
+
 //         if(k>=0){   
 //             return `실행 끝`;
 //         }
 //         else{   
 //             throw new Error('음수');
 //         }
-//     });
-// }
+// };
+
 
 // const a = fetchUser(-10)
 // .then((v)=>{    
@@ -97,54 +134,7 @@ k = (k>1) ? 3 : 0;
 //     return new Promise((resolve,reject)=>{
 //         setTimeout(()=>{
 //             console.log('B가 실행됨');
-//             resolve(45);
+//             resolve(-45);
 //         },3000);
 //     })
 // }
-
-// function B() {
-//     return new Promise((resolve,reject)=>{
-//         setTimeout(()=>{
-//             console.log('B가 실행됨');
-//             resolve(45);
-//         },3000);
-//     })
-// }
-
-///////////////////////////////////////////////////////////////////
-// async의 함수의 await 기능 
-//(Promise 안에서 또 다른 Promise가 동기적으로 실행하는 것을 가능하게 한다)
-
-async function fetchUser(a) {   
-    console.log(`Promise 실행`);
-
-    const k = await B(); // *await는 async 함수 내에서만, 다른 Promise의 종료를 기다릴 때 사용 가능*
-
-        if(k>=0){   
-            return `실행 끝`;
-        }
-        else{   
-            throw new Error('음수');
-        }
-};
-
-
-const a = fetchUser(-10)
-.then((v)=>{    
-    console.log(`fetchUser result : ${v}`);
-})
-.catch((error)=>{   
-    console.log(`에러발생 : ${error}`);
-})
-.finally(()=>{  
-    console.log(`Promise 끝 from finally`);
-})
-
-function B() {
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            console.log('B가 실행됨');
-            resolve(-45);
-        },3000);
-    })
-}

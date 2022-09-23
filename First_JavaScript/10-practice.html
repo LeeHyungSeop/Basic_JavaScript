@@ -35,6 +35,12 @@
             <button id="_op_calc">=</button>
             <button id="_op_div">/</button>
         </div>
+        <div>
+            <h3 id="f_num">First Number : </h3>
+            <h3 id="op">Operator : </h3>
+            <h3 id="s_num">Second Number :</h3>
+            <h1 id="result">Result : </h1>
+        </div>
 
         <script>
 
@@ -46,6 +52,11 @@
             const show_operator=document.querySelector('#_operator');
             const show_result=document.querySelector('#_show_result');
 
+            const show_f_num = document.querySelector('#f_num');
+            const show_s_num = document.querySelector('#s_num');
+            const show_op = document.querySelector('#op');
+            const show_result_wb = document.querySelector('#result');
+
             const numFunc= (num) => {
 
                 return ()=>{
@@ -53,6 +64,7 @@
                         console.log('첫번째 숫자 눌렸음');
                         first_num=first_num+num;
                         show_result.value=first_num;
+                        show_f_num.textContent = 'First Numer : '+first_num;
                         // show_result.showContent=first_num; 는 왜 안되지?
                         
                     }
@@ -60,6 +72,7 @@
                         console.log('두번째 숫자 눌렸음');
                         second_num=second_num+num;
                         show_result.value=second_num;
+                        show_s_num.textContent = 'Second Number : '+second_num;
                     }
                 };
 
@@ -73,6 +86,7 @@
                     case '/':
                         operator=op;
                         show_operator.value=op;
+                        show_op.textContent = 'Operator : '+show_operator.value
                         break;
                     case '=':
                         show_operator.value='=';
@@ -91,6 +105,7 @@
                                 show_result.value=parseInt(first_num)*parseInt(second_num);
                                 break;
                         }
+                        show_result_wb.textContent = 'Result : '+show_result.value;
                         break;
 
                     case 'Clear':
@@ -99,6 +114,10 @@
                         show_result.value='';
                         first_num='';
                         second_num='';
+                        show_f_num.textContent = 'First Number : ';
+                        show_s_num.textContent= 'Second Number : ';
+                        show_op.textContent = 'Operator : ';
+                        show_result_wb.textContent = 'Result : ';
                         break;
                         
                 }

@@ -19,49 +19,54 @@
         <h1 id="result"></h1>
         <script>
 
+            const w_input = document.querySelector('#input_num');
             const w_btn_submit = document.querySelector('#btn_submit');
             const w_btn_chgClr=document.querySelector('#btn_chgClr');
-            const w_input = document.querySelector('#input_num');
             const w_h1_result=document.querySelector('#result');
 
             // Red --> Green --> Blue ---> Red ..
-            const clr_array=['red','green','blue','pink','yellow'];
+            const clr_array=['black','red','green','blue','pink','yellow'];
             let clr_idx=0;
+
+            // n이 짝수면 true 반환, else false 반환
+            const isEven=(n)=>{
+               if(n%2==0)
+                   return true;
+               else
+                   return false;
+           }
+
+            // 색바꾸기에 대한 evenlistener
             w_btn_chgClr.addEventListener('click',()=>{
                 clr_idx=(clr_idx+1)%clr_array.length;  // 순환
                 console.log('현재 색은 : '+clr_array[clr_idx]); // 색이 잘 바뀌는지 콘솔창에서 확인
                 w_h1_result.style.color=clr_array[clr_idx];
             })
-
-             // n이 짝수면 true 반환, else false 반환
-             const isEven=(n)=>{
-                if(n%2==0)
-                    return true;
-                else
-                    return false;
-            }
-            // click 이라는 event가 발생하면 arrow func이라는 listener를 처리하라.
+            
+            // 제출이라는 eventlistener
             w_btn_submit.addEventListener('click',()=>{ 
                 console.log('버튼 눌렸음!');
-
+                
                 // w_input에 입력받은 것 : value 를 숫자로 바꿔 가져온다
                 // NaN : Not a Number == NULL
                 const temp = parseInt(w_input.value);
-
+                
                 if(!temp){ // NaN
-                    w_h1_result.textContent = '똑바로 입력하세요';
+                    w_h1_result.textContent = '다시 입력하세요';
                 }
                 else{
                     let decision='홀수';
                     if(isEven(temp) ==true) {
-                         decision='짝수';
+                        decision='짝수';
                     }
-                     w_h1_result.textContent = temp+'는 '+decision+'입니다.';
+                    w_h1_result.textContent = temp+'는 '+decision+'입니다.';
                 }
                 w_input.value=''; // 숫자 제출 후 칸을 비운다.
                 w_input.focus(); // 그 칸에 바로 입력할 수 있도록 커서를 위치시킨다
-             });
-
+                clr_idx=0; // 제출 후 검은색으로 초기화
+                w_h1_result.style.color=clr_array[clr_idx];
+            });
+            
         </script>
 
     </body>

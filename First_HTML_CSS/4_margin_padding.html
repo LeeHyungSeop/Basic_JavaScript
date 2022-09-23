@@ -2,23 +2,39 @@
 
     <head>
 
+        <meta charset="utf8">
+        <title>maring_padding_border</title>
+
         <style>
         
-        div#outer {
-            display: inline-block;
-            background-color: blueviolet;
-            margin: 100px;
-            border: 2px solid #ff0000;
-        }
-        div#inner{
-            display: inline-block;
-            background-color: aqua;
-            /*margin: 50px;*/
-            /* margin: 50px 10px;*/
-            /*margin: 50px 10px 90px;*/ /*위 좌우 아래*/
-            margin: 50px 10px 40px 100px; /*상 우 하 좌*/
-            padding : 50px 10px 40px 100px;
-        }
+
+            /*
+                margin  : 나를 감싸는 애를 기준으로 정해진px만큼 거리를 둔다 (나와 )
+                padding : 나의 몸집을 정해진 px만큼 키운다
+                border  : 박스를 친다. 
+            */
+            div#out{
+                display: inline-block;
+                background-color: yellow;
+                margin: 300px;
+                border: 3px black solid;
+            }
+            div#in1{
+                display: inline-block;
+                background-color: red;
+                color: blueviolet;
+                margin: 10px 30px 60px 30px;
+                border: 5px dashed black;
+                padding: 10px 10px 10px 10px ; /* 상 우 하 좌 */
+            }
+            div#in2{
+                display: inline-block;
+                background-color: blue;
+                color: blueviolet;
+                margin : 100px 200px 0px 0px;
+                border: 10px dotted black;
+                padding: 20px 20px 20px 20px ;
+            }
 
         </style>
 
@@ -27,10 +43,14 @@
     <body>
         
 
-        <div id="outer">
+        <div id="out">
 
-            <div id="inner">
-                HELLO
+            <div id="in1">
+                hello
+            </div>
+
+            <div id ="in2">
+                Hello!
             </div>
 
         </div>

@@ -29,10 +29,29 @@
         
 
         <script>
+
             const cp_table = document.createElement('table');
             const cp_result = document.createElement('div');
             let mark = 'O';
             let cnt = 0;
+
+            // td들을 저장하기 위한 별도의 2차원 배열
+            const board = [];
+
+            for(let i = 0 ;i<3;i++){ // tr
+                const cp_tr = document.createElement('tr');
+                const t_row = [];
+
+                for(let j=0;j<3;j++){ // td
+                    const cp_td = document.createElement('td');
+                    cp_tr.append(cp_td); // 덧붙인다
+                    t_row.push(cp_td);
+                }
+                board.push(t_row); 
+                cp_table.append(cp_tr);
+            }
+            document.body.append(cp_table);
+            document.body.append(cp_result);
 
             // _td 위치를 기준으로 승패를 판단
             const checkWin = (_td) => {
@@ -91,15 +110,6 @@
                     // 승부가 끝나면 eventListener를 제거
                 }
 
-                // 무승부 판별
-                // 2차원 배열인 board를 1차원으로 만들고(flat()) 모든 요소(every)에 대해
-                // 빈 문자열이 아니면? 꽉 찬 거니까 무승부.
-                // if( board.flat().every((_td)=>_td.textContent !== '') === true ) {
-                //     cp_result.textContent='무승부입니다';
-                //     cp_table.removeEventListener('click',table_event_listener);
-                //     return;
-                // }
-
                 if(cnt===9){
                     cp_result.textContent='무승부입니다';
                     cp_table.removeEventListener('click',table_event_listener);
@@ -109,26 +119,6 @@
                 mark = (mark === 'O') ? 'X' : 'O'; // O, X를 번갈아 간다
 
             };
-
-            // td들을 저장하기 위한 별도의 2차원 배열
-            const board = [];
-
-
-            for(let i = 0 ;i<3;i++){ // tr
-                const cp_tr = document.createElement('tr');
-                const t_row = [];
-
-                for(let j=0;j<3;j++){ // td
-                    const cp_td = document.createElement('td');
-                    cp_tr.append(cp_td); // 덧붙인다
-                    t_row.push(cp_td);
-                }
-                board.push(t_row); 
-                cp_table.append(cp_tr);
-            }
-
-            document.body.append(cp_table);
-            document.body.append(cp_result);
 
             cp_table.addEventListener('click', table_event_listener );
 

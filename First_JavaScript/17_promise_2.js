@@ -2,6 +2,7 @@
 // 웹 프로그래밍에서는 대부분 비동기식으로 한다.
 
 // 비동기식 요청 (1. Promise Class 사용, 2. Promise 없이 사용)
+//                                      1) XMLHttpRequest() , 2) fetch
 // 코드가 작성된 순서와는 상관없이 진행
 
 'use strict'

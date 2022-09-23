@@ -26,7 +26,7 @@
             // // => 갖고 온다는 의미, 갖고 온 elem로 {무엇을 할건지}
 
 
-            // // 사용자가 입력한 숫자가 짝수?홀수? 판별하여 h11에 출력하기
+            // // 사용자가 입력한 숫자가 짝수?홀수? 판별하여 h11에 출력하기 //////////////////////////////////
             
             const userMsg=prompt();
             const userNumber=parseInt(userMsg); // 사용자 입력 문자열 ---> 정수
@@ -42,6 +42,7 @@
                 msg=userMsg+"는 짝수입니다";
             }
             document.querySelector('h1#h11').textContent=msg;
+            // document.getElementById('h11').textContent = msg;q
 
         </script>
 
